@@ -22,7 +22,7 @@ interface Student {
   newSpecialty: string;
   specialty_code: string;
   newSpecialtyCode: string;
-  dd_mm_yy: any;
+  dd_mm_yy: Date | string;
   in_grant: boolean;
   newInGrant: boolean;
 }
@@ -138,7 +138,7 @@ export default function Home() {
                   {students.newStudentsName}
                   {students.nameSurname}
                 </h1>
-                <p>Birth date: {students.dd_mm_yy?.toLocaleDateString()}</p>{" "}
+                <p>Birth date: {new Date(students.dd_mm_yy).toLocaleDateString()}</p>{" "}
                 {/* displaying the formatted date*/}
                 <p>
                   Specialty: {students.specialty}
