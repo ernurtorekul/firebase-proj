@@ -42,7 +42,7 @@ export default function Home() {
   const [updateName, setUpdateName] = useState("");
 
   // upload file
-  const [fileUpload, setFileUpload] = useState(null);
+  const [fileUpload, setFileUpload] = useState<File | null>(null);
 
   const getStudentsList = async () => {
     try {
@@ -160,7 +160,11 @@ export default function Home() {
                 <div>
                   <Input
                     type="file"
-                    onChange={(e) => setFileUpload(e.target.files[0])}
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files[0]) {
+                        setFileUpload(e.target.files[0]);
+                      }
+                    }}
                   />
                   <Button onClick={uploadFile}>upload</Button>
                 </div>
